@@ -72,7 +72,7 @@ def run(args=[]):
         kwargs['indent'] = opts.indent
 
     output = '%s\n' % pofile_to_json(opts.po_filepath_or_content, **kwargs)
-    sys.stdout(output)
+    sys.stdout.write(output)
 
     return (output, 0)
 
