@@ -31,7 +31,7 @@ def pofile_to_json(content, fallback_to_msgid=False, fuzzy=False,
                     entry.msgstr if entry.msgstr else (
                         entry.msgid if fallback_to_msgid else entry.msgstr)
         else:
-            if entry.msgid_plural:                
+            if entry.msgid_plural:
                 # ``fallback_to_msgid`` based on enumeration it's only valid
                 # for most common languages the most correct way would be to
                 # parse plural_forms, if provided and redirect the fallback

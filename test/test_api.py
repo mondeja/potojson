@@ -1,5 +1,3 @@
-import json
-
 import pytest
 
 from potojson import pofile_to_json
@@ -8,7 +6,7 @@ POFILE_START = '#\n\nmsgid ""\nmsgstr ""\n\n'
 
 
 @pytest.mark.parametrize(
-    (   
+    (
         'content', 'output', 'fallback_to_msgid', 'fuzzy',
         'pretty', 'indent', 'language', 'plural_forms',
     ),
@@ -18,14 +16,14 @@ POFILE_START = '#\n\nmsgid ""\nmsgstr ""\n\n'
             '{"Hello": "Hola"}',
             False, False, False, None, None, None,
         ),
-        
+
         # msgctxt
         (
             POFILE_START + 'msgctxt "Month"\nmsgid "May"\nmsgstr "Mayo"',
             '{"Month": {"May": "Mayo"}}',
             False, False, False, None, None, None,
         ),
-        
+
         # fallback_to_msgid
         #   True
         (
@@ -39,7 +37,7 @@ POFILE_START = '#\n\nmsgid ""\nmsgstr ""\n\n'
             '{"Hello": ""}',
             False, False, False, None, None, None,
         ),
-        
+
         # msgid_plural
         (
             (POFILE_START + 'msgid "$n word"\nmsgid_plural "$n words"\n'
@@ -47,7 +45,7 @@ POFILE_START = '#\n\nmsgid ""\nmsgstr ""\n\n'
             '{"$n word": ["$n palabra", "$n palabras"]}',
             False, False, False, None, None, None,
         ),
-        
+
         # msgid_plural + msgctxt
         (
             (POFILE_START + 'msgctxt "a context"\nmsgid "$n word"\n'
@@ -56,7 +54,7 @@ POFILE_START = '#\n\nmsgid ""\nmsgstr ""\n\n'
             ('{"a context": {"$n word": ["$n palabra", "$n palabras"]}}'),
             False, False, False, None, None, None,
         ),
-        
+
         # fallback_to_msgid + msgid_plural
         #   True
         (
@@ -72,7 +70,7 @@ POFILE_START = '#\n\nmsgid ""\nmsgstr ""\n\n'
             '{"$n word": ["", ""]}',
             False, False, False, None, None, None,
         ),
-        
+
         # fallback_to_msgid + msgid_plural + msgctxt
         #   True
         (
@@ -88,7 +86,7 @@ POFILE_START = '#\n\nmsgid ""\nmsgstr ""\n\n'
             ('{"a context": {"$n word": ["", ""]}}'),
             False, False, False, None, None, None,
         ),
-        
+
         # fuzzy
         #   True
         (
@@ -102,7 +100,7 @@ POFILE_START = '#\n\nmsgid ""\nmsgstr ""\n\n'
             '{}',
             False, False, False, None, None, None,
         ),
-        
+
         # pretty
         (
             POFILE_START + 'msgid "Hello"\nmsgstr "Hola"\n',
@@ -115,7 +113,7 @@ POFILE_START = '#\n\nmsgid ""\nmsgstr ""\n\n'
             '{\n   "Hello": "Hola"\n}',
             False, False, True, 3, None, None,
         ),
-        
+
         # language
         #   discover from pofile
         (
@@ -129,7 +127,7 @@ POFILE_START = '#\n\nmsgid ""\nmsgstr ""\n\n'
             '{"": {"language": "es"}}',
             False, False, False, None, 'es', None,
         ),
-        
+
         # plural_forms
         #   discover from pofile
         (
