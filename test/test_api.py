@@ -24,6 +24,13 @@ POFILE_START = '#\n\nmsgid ""\nmsgstr ""\n\n'
             False, False, False, None, None, None,
         ),
 
+        # obsolete
+        (
+            POFILE_START + '#~ msgid "May"\n#~ msgstr "Mayo"',
+            '{}',
+            False, False, False, None, None, None,
+        ),
+
         # fallback_to_msgid
         #   True
         (

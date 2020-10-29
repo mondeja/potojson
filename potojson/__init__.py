@@ -2,7 +2,7 @@ import json
 
 import polib
 
-__version__ = '0.0.2'
+__version__ = '0.0.3'
 __version_info__ = tuple([int(i) for i in __version__.split('.')])
 __title__ = 'potojson'
 __description__ = 'Pofile to JSON conversion without pain.'
@@ -14,7 +14,7 @@ def pofile_to_json(content, fallback_to_msgid=False, fuzzy=False,
     response = {}
     po = polib.pofile(content)
     for entry in po:
-        if not fuzzy and entry.fuzzy:
+        if entry.obsolete or (not fuzzy and entry.fuzzy):
             continue
         if entry.msgctxt:
             if entry.msgctxt not in response:
