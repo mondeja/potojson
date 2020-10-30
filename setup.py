@@ -95,7 +95,7 @@ setup(
     url=URL,
     project_urls={
         'Documentation': ('https://github.com/mondeja/potojson/'
-                          'blob/master/README.md'),
+                          'blob/master/README.md#documentation'),
         'GitHub Project': 'https://github.com/mondeja/potojson',
         'Issue Tracker': 'https://github.com/mondeja/potojson/issues'
     },

@@ -1,6 +1,7 @@
 # 📦 potojson
 
-[![PyPI](https://img.shields.io/pypi/v/potojson)](https://pypi.org/project/potojson/) [![Tests](https://img.shields.io/travis/mondeja/potojson?label=tests&logo=travis)](https://travis-ci.com/github/mondeja/potojson) [![Coveralls](https://img.shields.io/coveralls/github/mondeja/potojson?logo=coveralls)](https://coveralls.io/github/mondeja/potojson)
+[![PyPI][pypi-version-badge-link]][pypi-link] [![Python versions][pypi-pyversions-badge-link]][pypi-link] [![Tests][travisci-tests-badge-link]][travisci-link] [![coveralls-badge-link]][coveralls-link]
+
 
 Pofile to JSON conversion without pain.
 
@@ -100,3 +101,11 @@ optional arguments:
   -s PLURAL_FORMS, --plural-forms PLURAL_FORMS
                         Plural forms for the language of the translations. Will be inserted in the empty key of the JSON output. If not provided and the passed pofile includes the "Plural-Forms" header, will be extracted from it.
 ```
+
+[pypi-link]: https://pypi.org/project/potojson
+[pypi-version-badge-link]: https://img.shields.io/pypi/v/potojson
+[pypi-pyversions-badge-link]: https://img.shields.io/pypi/pyversions/potojson
+[travisci-link]: https://travis-ci.com/github/mondeja/potojson
+[travisci-tests-badge-link]: https://img.shields.io/travis/mondeja/potojson?label=tests&logo=travis
+[coveralls-link]: https://coveralls.io/github/mondeja/potojson
+[coveralls-badge-link]: https://img.shields.io/coveralls/github/mondeja/potojson?logo=coveralls
