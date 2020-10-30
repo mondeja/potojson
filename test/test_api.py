@@ -1,9 +1,7 @@
 import pytest
 
 from potojson import pofile_to_json
-
-
-POFILE_START = '#\n\nmsgid ""\nmsgstr ""\n\n'
+from test import POFILE_START
 
 
 @pytest.mark.parametrize(

@@ -5,7 +5,7 @@
 import argparse
 import sys
 
-from potojson import __version__, __description__, pofile_to_json
+from potojson import __description__, __version__, pofile_to_json
 
 
 def build_parser():
