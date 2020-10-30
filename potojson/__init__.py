@@ -1,9 +1,10 @@
-import json
+from collections import OrderedDict
+from json.encoder import JSONEncoder
 
 import polib
 
 
-__version__ = '0.0.7'
+__version__ = '0.0.8'
 __version_info__ = tuple([int(i) for i in __version__.split('.')])
 __title__ = 'potojson'
 __description__ = 'Pofile to JSON conversion without pain.'
@@ -12,9 +13,9 @@ __all__ = ("pofile_to_json",)
 
 def pofile_to_json(content_or_filepath, fallback_to_msgid=False, fuzzy=False,
                    pretty=False, indent=2, language=None, plural_forms=None,
-                   as_dict=False):
+                   as_dict=False, sort_keys=False, **kwargs):
     """Converts pofile by content or filepath into JSON format. Output can be
-    customized using some parameters:
+    customized using some parameters.
 
     :param content: Pofile content or filepath to be converted into JSON.
     :type content: str
@@ -45,6 +46,10 @@ def pofile_to_json(content_or_filepath, fallback_to_msgid=False, fuzzy=False,
 
     :param as_dict: Returns the output as a Python dictionary.
     :type as_dict: bool
+
+    :param sort_keys: Sort dictionary by key. Combined with `as_dict`
+        parameter, returns an instance of :py:class:`collections.OrderedDict`.
+    :type sort_keys: bool
 
     :return: Pofile as string in JSON format.
     :rtype: str
@@ -95,7 +100,13 @@ def pofile_to_json(content_or_filepath, fallback_to_msgid=False, fuzzy=False,
         if plural_forms:
             response[""]["plural-forms"] = plural_forms
     if as_dict:
+        if sort_keys:
+            return OrderedDict(
+                sorted(response.items(), key=lambda item: item[0]))
         return response
     if pretty and indent is None:
         indent = 2
-    return json.dumps(response, indent=indent if pretty else None)
+    return JSONEncoder(
+        indent=indent if pretty else None,
+        sort_keys=sort_keys, **kwargs
+    ).encode(response)

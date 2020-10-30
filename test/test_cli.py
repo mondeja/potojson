@@ -88,3 +88,16 @@ def test_plural_forms(capsys, arg):
     assert exitcode == 0
     assert output == expected_output
     assert out == expected_output
+
+
+@pytest.mark.parametrize('arg', ['-k', '--sort-keys'])
+def test_sort_keys(capsys, arg):
+    pofile_content = (POFILE_START + 'msgid "Hello"\nmsgstr "Hola"\n'
+                      'msgid "A"\nmsgstr "B"\n')
+    output, exitcode = run([pofile_content, arg])
+    out, err = capsys.readouterr()
+
+    expected_output = '{"A": "B", "Hello": "Hola"}\n'
+    assert exitcode == 0
+    assert output == expected_output
+    assert out == expected_output

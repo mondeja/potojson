@@ -42,6 +42,8 @@ def build_parser():
                              ' of the JSON output. If not provided and the'
                              ' passed pofile includes the "Plural-Forms"'
                              ' header, will be extrated from it.')
+    parser.add_argument('-k', '--sort-keys', dest='sort_keys',
+                        action='store_true', help='Sort JSON output by keys.')
     return parser
 
 
@@ -66,7 +68,8 @@ def run(args=[]):
         fuzzy=opts.fuzzy,
         pretty=opts.pretty,
         language=opts.language,
-        plural_forms=opts.plural_forms
+        plural_forms=opts.plural_forms,
+        sort_keys=opts.sort_keys,
     )
     if isinstance(opts.indent, int):
         kwargs['indent'] = opts.indent
