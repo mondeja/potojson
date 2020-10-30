@@ -16,7 +16,37 @@ pip install potojson
 
 <a name="pofile_to_json" href="#pofile_to_json">#</a> <b>pofile_to_json</b>(<i>content</i>, <i>fallback_to_msgid=False</i>, <i>fuzzy=False</i>, <i>pretty=False</i>, <i>indent=2</i>, <i>language=None</i>, <i>plural_forms=None</i>, <i>as_dict=False</i>) ⇒ `str`
 
-Converts a pofile passed as string or filepath and returns a JSON formatted output with next style:
+Converts a pofile passed as string or filepath and returns a JSON formatted output. Given this pofile:
+
+```po
+#
+
+#, fuzzy
+msgid ""
+msgstr ""
+"Language: es\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+msgid "msgid"
+msgstr "msgstr"
+
+msgctxt "msgctxt"
+msgid "msgid"
+msgstr "msgstr"
+
+msgid "msgid"
+msgid_plural "msgid_plural"
+msgstr[0] "msgstr[0]"
+msgstr[1] "msgstr[1]"
+
+msgctxt "msgctxt"
+msgid "msgid"
+msgid_plural "msgid_plural"
+msgstr[0] "msgstr[0]"
+msgstr[1] "msgstr[1]"
+```
+
+... the output will be:
 
 ```json
 {
@@ -28,14 +58,14 @@ Converts a pofile passed as string or filepath and returns a JSON formatted outp
   "msgctxt": {
     "msgid": "msgstr",
   },
-  "msgid": ["msgstr[0]", "msgstr[1]", "msgstr[2]"],
+  "msgid": ["msgstr[0]", "msgstr[1]"],
   "msgctxt": {
-    "msgid": ["msgstr[0]", "msgstr[1]", "msgstr[2]"],
+    "msgid": ["msgstr[0]", "msgstr[1]"],
   }
 }
 ```
 
-This output can be customized tuning the parameters of the function.
+This output can be customized tuning the parameters of the function:
 
 - **content** (str) Content or filepath of the pofile to convert.
 - **fallback_to_msgid** (bool) Use msgid if translation is missing.
@@ -43,7 +73,7 @@ This output can be customized tuning the parameters of the function.
 - **pretty** (bool) Pretty-print JSON output.
 - **indent** (int) Number of spaces for indentation used pretty-printing JSON output. Only takes effect if `pretty is True`.
 - **language** (str) Language for the translations. Will be inserted in the empty key of the JSON output. If not provided and the passed pofile includes the "Language" header, will be extracted from it.
-- **plural_forms** (str) Plural forms for the language of the translations. Will be insertedin the empty key of the JSON output. If not provided and the passed pofile includes the "Plural-Forms" header, will be extracted from it.
+- **plural_forms** (str) Plural forms for the language of the translations. Will be inserted in the empty key of the JSON output. If not provided and the passed pofile includes the "Plural-Forms" header, will be extracted from it.
 - **as_dict** (bool) Returns the output as a Python dictionary.
 
 ### CLI
@@ -66,7 +96,7 @@ optional arguments:
   -p, --pretty          Pretty-print JSON output.
   -i N, --indent N      Number of spaces for indentation used pretty-printing JSON output. Only takes effect passing '--fuzzy' option.
   -l LANGUAGE, --language LANGUAGE
-                        Language for the translations. Will be inserted in the empty key of the JSON output. If not provided and the passed pofile includes the "Language" header, will be extrated from it.
+                        Language for the translations. Will be inserted in the empty key of the JSON output. If not provided and the passed pofile includes the "Language" header, will be extracted from it.
   -s PLURAL_FORMS, --plural-forms PLURAL_FORMS
-                        Plural forms for the language of the translations. Will be insertedin the empty key of the JSON output. If not provided and the passed pofile includes the "Plural-Forms" header, will be extrated from it.
+                        Plural forms for the language of the translations. Will be inserted in the empty key of the JSON output. If not provided and the passed pofile includes the "Plural-Forms" header, will be extracted from it.
 ```

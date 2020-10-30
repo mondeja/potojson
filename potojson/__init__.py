@@ -3,14 +3,14 @@ import json
 import polib
 
 
-__version__ = '0.0.5'
+__version__ = '0.0.6'
 __version_info__ = tuple([int(i) for i in __version__.split('.')])
 __title__ = 'potojson'
 __description__ = 'Pofile to JSON conversion without pain.'
 __all__ = ("pofile_to_json",)
 
 
-def pofile_to_json(content, fallback_to_msgid=False, fuzzy=False,
+def pofile_to_json(content_or_filepath, fallback_to_msgid=False, fuzzy=False,
                    pretty=False, indent=2, language=None, plural_forms=None,
                    as_dict=False):
     """Converts pofile by content or filepath into JSON format. Output can be
@@ -50,7 +50,7 @@ def pofile_to_json(content, fallback_to_msgid=False, fuzzy=False,
     :rtype: str
     """
     response = {}
-    po = polib.pofile(content)
+    po = polib.pofile(content_or_filepath)
     for entry in po:
         if entry.obsolete or (not fuzzy and entry.fuzzy):
             continue
