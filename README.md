@@ -14,7 +14,7 @@ pip install potojson
 
 ### API
 
-<a name="pofile_to_json" href="#pofile_to_json">#</a> <b>pofile_to_json</b>(<i>content</i>, <i>fallback_to_msgid=False</i>, <i>fuzzy=False</i>, <i>pretty=False</i>, <i>indent=2</i>, <i>language=None</i>, <i>plural_forms=None</i>) ⇒ `str`
+<a name="pofile_to_json" href="#pofile_to_json">#</a> <b>pofile_to_json</b>(<i>content</i>, <i>fallback_to_msgid=False</i>, <i>fuzzy=False</i>, <i>pretty=False</i>, <i>indent=2</i>, <i>language=None</i>, <i>plural_forms=None</i>, <i>as_dict=False</i>) ⇒ `str`
 
 Converts a pofile passed as string or filepath and returns a JSON formatted output with next style:
 
@@ -44,6 +44,7 @@ This output can be customized tuning the parameters of the function.
 - **indent** (int) Number of spaces for indentation used pretty-printing JSON output. Only takes effect if `pretty is True`.
 - **language** (str) Language for the translations. Will be inserted in the empty key of the JSON output. If not provided and the passed pofile includes the "Language" header, will be extracted from it.
 - **plural_forms** (str) Plural forms for the language of the translations. Will be insertedin the empty key of the JSON output. If not provided and the passed pofile includes the "Plural-Forms" header, will be extracted from it.
+- **as_dict** (bool) Returns the output as a Python dictionary.
 
 ### CLI
 
