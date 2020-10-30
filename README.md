@@ -41,9 +41,9 @@ This output can be customized tuning the parameters of the function.
 - **fallback_to_msgid** (bool) Use msgid if translation is missing.
 - **fuzzy** (bool) Include fuzzy messages.
 - **pretty** (bool) Pretty-print JSON output.
-- **indent** (int) Number of spaces for indentation used pretty-printing JSON output. Only takes effect if ``pretty is True``.
-- **language** (str) Language for the translations. Will be inserted in the empty key of the JSON output. If not provided and the passed pofile includes the "Language" header, will be extrated from it.
-- **plural_forms** (str) Plural forms for the language of the translations. Will be insertedin the empty key of the JSON output. If not provided and the passed pofile includes the "Plural-Forms" header, will be extrated from it.
+- **indent** (int) Number of spaces for indentation used pretty-printing JSON output. Only takes effect if `pretty is True`.
+- **language** (str) Language for the translations. Will be inserted in the empty key of the JSON output. If not provided and the passed pofile includes the "Language" header, will be extracted from it.
+- **plural_forms** (str) Plural forms for the language of the translations. Will be insertedin the empty key of the JSON output. If not provided and the passed pofile includes the "Plural-Forms" header, will be extracted from it.
 
 ### CLI
 

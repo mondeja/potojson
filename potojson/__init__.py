@@ -2,7 +2,8 @@ import json
 
 import polib
 
-__version__ = '0.0.3'
+
+__version__ = '0.0.4'
 __version_info__ = tuple([int(i) for i in __version__.split('.')])
 __title__ = 'potojson'
 __description__ = 'Pofile to JSON conversion without pain.'
@@ -11,6 +12,39 @@ __all__ = ("pofile_to_json",)
 
 def pofile_to_json(content, fallback_to_msgid=False, fuzzy=False,
                    pretty=False, indent=2, language=None, plural_forms=None):
+    """Converts pofile by content or filepath into JSON format. Output can be
+    customized using some parameters:
+
+    :param content: Pofile content or filepath to be converted into JSON.
+    :type content: str
+
+    :param fallback_to_msgid: Use msgid if translation is missing.
+    :type fallback_to_msgid: bool
+
+    :param fuzzy: Include fuzzy messages.
+    :type fuzzy: bool
+
+    :param pretty: Pretty-print JSON output.
+    :type pretty: bool
+
+    :param indent: Number of spaces for indentation used pretty-printing JSON
+        output. Only takes effect if ``pretty is True``.
+    :type indent: int
+
+    :param language: Language for the translations. Will be inserted in the
+        empty key of the JSON output. If not provided and the passed pofile
+        includes the "Language" header, will be extracted from it.
+    :type language: str
+
+    :param plural_forms: Plural forms for the language of the translations.
+        Will be insertedin the empty key of the JSON output. If not provided
+        and the passed pofile includes the "Plural-Forms" header, will be
+        extracted from it.
+    :type language: str
+
+    :return: Pofile as string in JSON format.
+    :rtype: str
+    """
     response = {}
     po = polib.pofile(content)
     for entry in po:
