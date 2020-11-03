@@ -173,6 +173,13 @@ from test import POFILE_START
              'msgid "A"\nmsgstr "B"\n'),
             OrderedDict({"A": "B", "Hello": "Hola"}),
             False, False, False, None, None, None, True, True,
+        ),
+
+        # Non ASCII characters
+        (
+            (POFILE_START + 'msgid "Coal"\nmsgstr "Carbón"\n'),
+            '{"Coal": "Carbón"}',
+            False, False, False, None, None, None, False, False,
         )
     )
 )

@@ -4,7 +4,7 @@ from json.encoder import JSONEncoder
 import polib
 
 
-__version__ = '0.0.8'
+__version__ = '0.0.9'
 __version_info__ = tuple([int(i) for i in __version__.split('.')])
 __title__ = 'potojson'
 __description__ = 'Pofile to JSON conversion without pain.'
@@ -108,5 +108,6 @@ def pofile_to_json(content_or_filepath, fallback_to_msgid=False, fuzzy=False,
         indent = 2
     return JSONEncoder(
         indent=indent if pretty else None,
+        ensure_ascii=False,
         sort_keys=sort_keys, **kwargs
     ).encode(response)
