@@ -1,7 +1,35 @@
+import io
+
 import pytest
 
 from potojson.__main__ import run
 from test import POFILE_START
+
+
+def test_stdin(capsys, monkeypatch):
+    pofile_content = POFILE_START + 'msgid "Hello"\nmsgstr ""\n'
+    monkeypatch.setattr('sys.stdin', io.StringIO(pofile_content))
+
+    expected_output = '{"Hello": ""}\n'
+    output, exitcode = run()
+    out, err = capsys.readouterr()
+
+    assert exitcode == 0
+    assert output == expected_output
+    assert out == expected_output
+
+
+def test_filepath(capsys, tmp_file):
+    pofile_content = POFILE_START + 'msgid "Hello"\nmsgstr ""\n'
+    expected_output = '{"Hello": ""}\n'
+
+    with tmp_file(pofile_content, ".po") as po_filepath:
+        output, exitcode = run([po_filepath])
+        out, err = capsys.readouterr()
+
+    assert exitcode == 0
+    assert output == expected_output
+    assert out == expected_output
 
 
 @pytest.mark.parametrize('arg', ['-m', '--fallback-to-msgid'])

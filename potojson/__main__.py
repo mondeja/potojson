@@ -13,9 +13,9 @@ def build_parser():
     parser.add_argument('-v', '--version', action='version',
                         version='%(prog)s ' + __version__,
                         help='Show program version number and exit.')
-    parser.add_argument('po_filepath_or_content',
+    parser.add_argument('po_filepath_or_content', nargs='*',
                         metavar='PO_FILEPATH_OR_CONTENT',
-                        help='Path to pofile or pofile content as a string.'
+                        help='Path to pofile or pofile content as string.'
                              ' If not provided, will be read from STDIN.')
     parser.add_argument('-m', '--fallback-to-msgid', dest='fallback_to_msgid',
                         action='store_true',
@@ -52,10 +52,12 @@ def parse_options(args=[]):
     if '-h' in args or '--help' in args:
         parser.print_help()
         sys.exit(0)
-    opts, unknown = parser.parse_known_args(args)
+    opts = parser.parse_args(args)
 
     if not sys.stdin.isatty():
         opts.po_filepath_or_content = sys.stdin.read().strip('\n')
+    elif isinstance(opts.po_filepath_or_content, list):
+        opts.po_filepath_or_content = opts.po_filepath_or_content[0]
 
     return opts
 

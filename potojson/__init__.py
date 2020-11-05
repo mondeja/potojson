@@ -4,7 +4,7 @@ from json.encoder import JSONEncoder
 import polib
 
 
-__version__ = '0.0.9'
+__version__ = '0.0.10'
 __version_info__ = tuple([int(i) for i in __version__.split('.')])
 __title__ = 'potojson'
 __description__ = 'Pofile to JSON conversion without pain.'
@@ -17,8 +17,9 @@ def pofile_to_json(content_or_filepath, fallback_to_msgid=False, fuzzy=False,
     """Converts pofile by content or filepath into JSON format. Output can be
     customized using some parameters.
 
-    :param content: Pofile content or filepath to be converted into JSON.
-    :type content: str
+    :param content_or_filepath: Pofile content or filepath to be converted into
+        JSON format.
+    :type content_or_filepath: str
 
     :param fallback_to_msgid: Use msgid if translation is missing.
     :type fallback_to_msgid: bool
