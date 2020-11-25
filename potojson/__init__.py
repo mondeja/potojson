@@ -4,7 +4,7 @@ from json.encoder import JSONEncoder
 import polib
 
 
-__version__ = '0.0.11'
+__version__ = '0.0.12'
 __version_info__ = tuple([int(i) for i in __version__.split('.')])
 __title__ = 'potojson'
 __description__ = 'Pofile to JSON conversion without pain.'

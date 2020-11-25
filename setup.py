@@ -14,7 +14,7 @@ EMAIL = 'mondejar1994@gmail.com'
 AUTHOR = 'Álvaro Mondéjar Rubio'
 REQUIRES_PYTHON = '>=3.6'
 REQUIRED = [
-    'polib==1.1.0',
+    'polib>=1.1.0',
 ]
 
 TEST_EXTRAS = [
@@ -26,7 +26,11 @@ TEST_EXTRAS = [
     'isort==5.6.4',
     'tox==3.20.1',
 ]
-DEV_EXTRAS = ['twine', 'bump2version', 'pre-commit'] + TEST_EXTRAS
+DEV_EXTRAS = [
+    'twine==3.2.0',
+    'bump2version==1.0.1',
+    'pre-commit==2.9.0'
+] + TEST_EXTRAS
 
 HERE = os.path.abspath(os.path.dirname(__file__))
 
