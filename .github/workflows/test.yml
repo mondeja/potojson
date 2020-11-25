@@ -20,5 +20,9 @@ jobs:
           python -m pip install .[test]
           pip list
       - name: Test with pytest
+        # https://github.com/actions/runner/issues/241#issuecomment-577360161
         run: |
-          pytest -svv --cov=potojson --cov-config setup.cfg
+          script -e -c 'pytest -svv --cov=potojson --cov-config setup.cfg'
+          coveralls
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
