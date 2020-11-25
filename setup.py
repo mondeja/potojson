@@ -13,24 +13,26 @@ URL = 'https://github.com/mondeja/potojson'
 EMAIL = 'mondejar1994@gmail.com'
 AUTHOR = 'Álvaro Mondéjar Rubio'
 REQUIRES_PYTHON = '>=3.6'
+
 REQUIRED = [
     'polib>=1.1.0',
 ]
-
-TEST_EXTRAS = [
-    'pytest==6.1.2',
-    'pytest-cov==2.10.1',
+LINT_EXTRAS = [
     'flake8==3.8.4',
     'flake8-print==3.1.4',
     'flake8-implicit-str-concat==0.1.0',
     'isort==5.6.4',
+]
+TEST_EXTRAS = [
+    'pytest==6.1.2',
+    'pytest-cov==2.10.1',
     'tox==3.20.1',
 ]
 DEV_EXTRAS = [
     'twine==3.2.0',
     'bump2version==1.0.1',
     'pre-commit==2.9.0'
-] + TEST_EXTRAS
+] + TEST_EXTRAS + LINT_EXTRAS
 
 HERE = os.path.abspath(os.path.dirname(__file__))
 
@@ -113,6 +115,7 @@ setup(
     extras_require={
         'dev': DEV_EXTRAS,
         'test': TEST_EXTRAS,
+        'lint': LINT_EXTRAS
     },
     include_package_data=True,
     license='BSD License',
