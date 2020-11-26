@@ -1,9 +1,15 @@
 # 📦 potojson
 
-[![PyPI][pypi-version-badge-link]][pypi-link] [![Python versions][pypi-pyversions-badge-link]][pypi-link] [![Tests][travisci-tests-badge-link]][travisci-link] [![coveralls-badge-link]][coveralls-link]
-
+[![PyPI][pypi-version-badge-link]][pypi-link]
+[![Python versions][pypi-pyversions-badge-link]][pypi-link]
+[![License][license-image]][license-link]
 
 Pofile to JSON conversion without pain.
+
+## Status
+
+[![Tests][tests-image]][tests-link]
+[![coverage-image]][coverage-link]
 
 ## Installation
 
@@ -114,7 +120,9 @@ optional arguments:
 [pypi-link]: https://pypi.org/project/potojson
 [pypi-version-badge-link]: https://img.shields.io/pypi/v/potojson
 [pypi-pyversions-badge-link]: https://img.shields.io/pypi/pyversions/potojson
-[travisci-link]: https://travis-ci.com/github/mondeja/potojson
-[travisci-tests-badge-link]: https://img.shields.io/travis/mondeja/potojson?label=tests&logo=travis
-[coveralls-link]: https://coveralls.io/github/mondeja/potojson
-[coveralls-badge-link]: https://img.shields.io/coveralls/github/mondeja/potojson?logo=coveralls
+[license-image]: https://img.shields.io/pypi/l/potojson?color=light-green
+[license-link]: https://github.com/mondeja/potojson/blob/master/LICENSE
+[tests-image]: https://img.shields.io/github/workflow/status/mondeja/potojson/Test
+[tests-link]: https://github.com/mondeja/potojson/actions?query=workflow%3ATest
+[coverage-link]: https://coveralls.io/github/mondeja/potojson
+[coverage-image]: https://img.shields.io/coveralls/github/mondeja/potojson
