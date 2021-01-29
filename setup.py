@@ -27,7 +27,7 @@ LINT_EXTRAS = [
 TEST_EXTRAS = [
     'pytest==6.2.2',
     'pytest-cov==2.11.1',
-    'tox==3.21.2',
+    'tox==3.21.3',
 ]
 DEV_EXTRAS = [
     'twine==3.3.0',
