@@ -1,4 +1,25 @@
 repos:
+  - repo: https://github.com/asottile/pyupgrade
+    rev: v2.9.0
+    hooks:
+      - id: pyupgrade
+        args:
+          - --py36-plus
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.4.0
+    hooks:
+      - id: end-of-file-fixer
+        name: end-of-file-fixer
+  - repo: https://github.com/asottile/setup-cfg-fmt
+    rev: v1.16.0
+    hooks:
+      - id: setup-cfg-fmt
+  - repo: https://github.com/psf/black
+    rev: stable
+    hooks:
+      - id: black
+        language_version: python3.6
+        files: \.py$
   - repo: https://gitlab.com/pycqa/flake8
     rev: 3.8.4
     hooks:
@@ -11,7 +32,6 @@ repos:
     hooks:
       - id: isort
         args:
-          - --check-only
           - --filter-files
         files: \.py$
   - repo: https://github.com/adrienverge/yamllint

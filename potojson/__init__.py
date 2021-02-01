@@ -4,16 +4,24 @@ from json.encoder import JSONEncoder
 import polib
 
 
-__version__ = '0.0.15'
-__version_info__ = tuple([int(i) for i in __version__.split('.')])
-__title__ = 'potojson'
-__description__ = 'Pofile to JSON conversion without pain.'
+__version__ = "0.0.16"
+__title__ = "potojson"
+__description__ = "Pofile to JSON conversion without pain."
 __all__ = ("pofile_to_json",)
 
 
-def pofile_to_json(content_or_filepath, fallback_to_msgid=False, fuzzy=False,
-                   pretty=False, indent=2, language=None, plural_forms=None,
-                   as_dict=False, sort_keys=False, **kwargs):
+def pofile_to_json(
+    content_or_filepath,
+    fallback_to_msgid=False,
+    fuzzy=False,
+    pretty=False,
+    indent=2,
+    language=None,
+    plural_forms=None,
+    as_dict=False,
+    sort_keys=False,
+    **kwargs
+):
     """Converts pofile by content or filepath into JSON format. Output can be
     customized using some parameters.
 
@@ -65,15 +73,21 @@ def pofile_to_json(content_or_filepath, fallback_to_msgid=False, fuzzy=False,
                 response[entry.msgctxt] = {}
             if entry.msgid_plural:
                 response[entry.msgctxt][entry.msgid] = list(
-                    value if value else (
+                    value
+                    if value
+                    else (
                         (entry.msgid_plural if i != 0 else entry.msgid)
-                        if fallback_to_msgid else value)
+                        if fallback_to_msgid
+                        else value
+                    )
                     for i, value in enumerate(entry.msgstr_plural.values())
                 )
             else:
-                response[entry.msgctxt][entry.msgid] = \
-                    entry.msgstr if entry.msgstr else (
-                        entry.msgid if fallback_to_msgid else entry.msgstr)
+                response[entry.msgctxt][entry.msgid] = (
+                    entry.msgstr
+                    if entry.msgstr
+                    else (entry.msgid if fallback_to_msgid else entry.msgstr)
+                )
         else:
             if entry.msgid_plural:
                 # ``fallback_to_msgid`` based on enumeration it's only valid
@@ -82,18 +96,25 @@ def pofile_to_json(content_or_filepath, fallback_to_msgid=False, fuzzy=False,
                 # msgids accordingly, but  it's too of little benefit to add
                 # such complexity
                 response[entry.msgid] = list(
-                    value if value else (
+                    value
+                    if value
+                    else (
                         (entry.msgid_plural if i != 0 else entry.msgid)
-                        if fallback_to_msgid else value)
+                        if fallback_to_msgid
+                        else value
+                    )
                     for i, value in enumerate(entry.msgstr_plural.values())
                 )
             else:
-                response[entry.msgid] = entry.msgstr if entry.msgstr else (
-                    entry.msgid if fallback_to_msgid else entry.msgstr)
-    if not language and 'Language' in po.metadata:
+                response[entry.msgid] = (
+                    entry.msgstr
+                    if entry.msgstr
+                    else (entry.msgid if fallback_to_msgid else entry.msgstr)
+                )
+    if not language and "Language" in po.metadata:
         language = po.metadata["Language"]
-    if not plural_forms and 'Plural-Forms' in po.metadata:
-        plural_forms = po.metadata['Plural-Forms']
+    if not plural_forms and "Plural-Forms" in po.metadata:
+        plural_forms = po.metadata["Plural-Forms"]
     if language or plural_forms:
         response[""] = {}
         if language:
@@ -102,13 +123,13 @@ def pofile_to_json(content_or_filepath, fallback_to_msgid=False, fuzzy=False,
             response[""]["plural-forms"] = plural_forms
     if as_dict:
         if sort_keys:
-            return OrderedDict(
-                sorted(response.items(), key=lambda item: item[0]))
+            return OrderedDict(sorted(response.items(), key=lambda item: item[0]))
         return response
     if pretty and indent is None:
         indent = 2
     return JSONEncoder(
         indent=indent if pretty else None,
         ensure_ascii=False,
-        sort_keys=sort_keys, **kwargs
+        sort_keys=sort_keys,
+        **kwargs
     ).encode(response)
