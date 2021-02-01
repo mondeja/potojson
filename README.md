@@ -80,7 +80,7 @@ This output can be customized tuning the parameters of the function:
 - **fuzzy** (bool) Include fuzzy messages.
 - **pretty** (bool) Pretty-print JSON output.
 - **indent** (int) Number of spaces for indentation used pretty-printing JSON
- output. Only takes effect if `pretty is True`.
+ output. Only takes effect if `pretty` is enabled.
 - **language** (str) Language for the translations. Will be inserted in the
  empty key of the JSON output. If not provided and the passed pofile includes
  the "Language" header, will be extracted from it.
@@ -89,7 +89,7 @@ This output can be customized tuning the parameters of the function:
  passed pofile includes the "Plural-Forms" header, will be extracted from it.
 - **as_dict** (bool) Returns the output as a Python dictionary.
 - **sort_keys** (bool) Sort dictionary by key. Combined with `as_dict`
- parameter, returns an instance of :py:class:`collections.OrderedDict`.
+ parameter, returns an instance of [`collections.OrderedDict`](ordereddict).
 
 ### CLI
 
@@ -126,3 +126,5 @@ optional arguments:
 [tests-link]: https://github.com/mondeja/potojson/actions?query=workflow%3ATest
 [coverage-link]: https://coveralls.io/github/mondeja/potojson
 [coverage-image]: https://img.shields.io/coveralls/github/mondeja/potojson
+
+[ordereddict]: https://docs.python.org/3/library/collections.html#collections.OrderedDict
