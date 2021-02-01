@@ -89,7 +89,7 @@ This output can be customized tuning the parameters of the function:
  passed pofile includes the "Plural-Forms" header, will be extracted from it.
 - **as_dict** (bool) Returns the output as a Python dictionary.
 - **sort_keys** (bool) Sort dictionary by key. Combined with `as_dict`
- parameter, returns an instance of [`collections.OrderedDict`](ordereddict).
+ parameter, returns an instance of [`collections.OrderedDict`][ordereddict].
 
 ### CLI
 

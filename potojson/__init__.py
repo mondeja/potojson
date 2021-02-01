@@ -4,7 +4,7 @@ from json.encoder import JSONEncoder
 import polib
 
 
-__version__ = "0.0.16"
+__version__ = "0.0.17"
 __title__ = "potojson"
 __description__ = "Pofile to JSON conversion without pain."
 __all__ = ("pofile_to_json",)
