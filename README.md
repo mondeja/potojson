@@ -109,7 +109,7 @@ optional arguments:
                         Use msgid if translation is missing.
   -f, --fuzzy           Include fuzzy messages.
   -p, --pretty          Pretty-print JSON output.
-  -i N, --indent N      Number of spaces for indentation used pretty-printing JSON output. Only takes effect passing '--fuzzy' option.
+  -i N, --indent N      Number of spaces for indentation used pretty-printing JSON output. Only takes effect passing '--pretty' option.
   -l LANGUAGE, --language LANGUAGE
                         Language for the translations. Will be inserted in the empty key of the JSON output. If not provided and the passed pofile includes the "Language" header, will be extracted from it.
   -s PLURAL_FORMS, --plural-forms PLURAL_FORMS
