@@ -49,9 +49,8 @@ def build_parser():
         "-i",
         "--indent",
         dest="indent",
-        help="Number of spaces for indentation used pretty-"
-        "printing JSON output. Only takes effect passing"
-        " '--fuzzy' option.",
+        help="Number of spaces for indentation used pretty-printing JSON"
+        ' output. Only takes effect passing the "--pretty" option.',
         metavar="N",
         type=int,
     )
@@ -60,21 +59,19 @@ def build_parser():
         "--language",
         dest="language",
         default=None,
-        help="Language for the translations. Will be inserted"
-        " in the empty key of the JSON output. If not"
-        " provided and the passed pofile includes the"
-        ' "Language" header, will be extrated from it.',
+        help="Language for the translations. Will be inserted in the empty key"
+        " of the JSON output. If not provided and the passed pofile includes"
+        ' the "Language" header, will be extracted from it.',
     )
     parser.add_argument(
         "-s",
         "--plural-forms",
         dest="plural_forms",
         default=None,
-        help="Plural forms for the language of the"
-        " translations. Will be insertedin the empty key"
-        " of the JSON output. If not provided and the"
-        ' passed pofile includes the "Plural-Forms"'
-        " header, will be extrated from it.",
+        help="Plural forms for the language of the translations. Will be"
+        " inserted in the empty key of the JSON output. If not provided and"
+        ' the passed pofile includes the "Plural-Forms" header, will be'
+        " extracted from it.",
     )
     parser.add_argument(
         "-k",
