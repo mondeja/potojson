@@ -22,7 +22,7 @@ def _build_parser():
         nargs="*",
         metavar="PO_FILEPATH_OR_CONTENT",
         help="Path to pofile or pofile content as string."
-        " If not provided, will be read from STDIN.",
+        " If the input file stream is interactive, will be read from STDIN.",
     )
     parser.add_argument(
         "-m",
@@ -87,12 +87,15 @@ def _parse_options(args=[]):
     parser = _build_parser()
     if "-h" in args or "--help" in args:
         parser.print_help()
-        sys.exit(0)
+        sys.exit(1)
     opts = parser.parse_args(args)
 
     if not sys.stdin.isatty():
         opts.po_filepath_or_content = sys.stdin.read().strip("\n")
     elif isinstance(opts.po_filepath_or_content, list):
+        if not opts.po_filepath_or_content:
+            parser.print_help()
+            sys.exit(1)
         opts.po_filepath_or_content = opts.po_filepath_or_content[0]
 
     return opts

@@ -94,13 +94,13 @@ This output can be customized tuning the parameters of the function:
 ### CLI
 
 ```
-usage: potojson [-h] [-v] [-m] [-f] [-p] [-i N] [-l LANGUAGE] [-s PLURAL_FORMS] PO_FILEPATH_OR_CONTENT
+usage: potojson [-h] [-v] [-m] [-f] [-p] [-i N] [-l LANGUAGE] [-s PLURAL_FORMS] [-k] [PO_FILEPATH_OR_CONTENT [PO_FILEPATH_OR_CONTENT ...]]
 
 Pofile to JSON conversion without pain.
 
 positional arguments:
   PO_FILEPATH_OR_CONTENT
-                        Path to pofile or pofile content as a string. If not provided, will be read from STDIN.
+                        Path to pofile or pofile content as string. If the input file stream is interactive, will be read from STDIN.
 
 optional arguments:
   -h, --help            show this help message and exit
@@ -109,12 +109,12 @@ optional arguments:
                         Use msgid if translation is missing.
   -f, --fuzzy           Include fuzzy messages.
   -p, --pretty          Pretty-print JSON output.
-  -i N, --indent N      Number of spaces for indentation used pretty-printing JSON output. Only takes effect passing '--pretty' option.
+  -i N, --indent N      Number of spaces for indentation used pretty-printing JSON output. Only takes effect passing the "--pretty" option.
   -l LANGUAGE, --language LANGUAGE
                         Language for the translations. Will be inserted in the empty key of the JSON output. If not provided and the passed pofile includes the "Language" header, will be extracted from it.
   -s PLURAL_FORMS, --plural-forms PLURAL_FORMS
                         Plural forms for the language of the translations. Will be inserted in the empty key of the JSON output. If not provided and the passed pofile includes the "Plural-Forms" header, will be extracted from it.
-  -k, --sort-keys       Sort JSON output by key.
+  -k, --sort-keys       Sort JSON output by keys.
 ```
 
 [pypi-link]: https://pypi.org/project/potojson
