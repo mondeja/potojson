@@ -46,6 +46,13 @@ def _build_parser():
         help="Pretty-print JSON output.",
     )
     parser.add_argument(
+        "-k",
+        "--sort-keys",
+        dest="sort_keys",
+        action="store_true",
+        help="Sort JSON output by keys.",
+    )
+    parser.add_argument(
         "-i",
         "--indent",
         dest="indent",
@@ -58,6 +65,7 @@ def _build_parser():
         "-l",
         "--language",
         dest="language",
+        metavar="LANGUAGE",
         default=None,
         help="Language for the translations. Will be inserted in the empty key"
         " of the JSON output. If not provided and the passed pofile includes"
@@ -67,6 +75,7 @@ def _build_parser():
         "-s",
         "--plural-forms",
         dest="plural_forms",
+        metavar="PLURAL_FORMS",
         default=None,
         help="Plural forms for the language of the translations. Will be"
         " inserted in the empty key of the JSON output. If not provided and"
@@ -74,11 +83,13 @@ def _build_parser():
         " extracted from it.",
     )
     parser.add_argument(
-        "-k",
-        "--sort-keys",
-        dest="sort_keys",
-        action="store_true",
-        help="Sort JSON output by keys.",
+        "-e",
+        "--encoding",
+        dest="encoding",
+        metavar="ENCODING",
+        default=None,
+        help="The encoding to use reading the pofile. By default"
+        " will be auto-detected.",
     )
     return parser
 
@@ -111,6 +122,7 @@ def _run(args=[]):
         language=opts.language,
         plural_forms=opts.plural_forms,
         sort_keys=opts.sort_keys,
+        encoding=opts.encoding,
     )
     if isinstance(opts.indent, int):
         kwargs["indent"] = opts.indent

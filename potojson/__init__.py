@@ -6,7 +6,7 @@ from json.encoder import JSONEncoder
 import polib
 
 
-__version__ = "0.0.21"
+__version__ = "0.0.22"
 __title__ = "potojson"
 __description__ = "Pofile to JSON conversion without pain."
 __all__ = ("pofile_to_json",)
@@ -17,11 +17,12 @@ def pofile_to_json(
     fallback_to_msgid=False,
     fuzzy=False,
     pretty=False,
+    sort_keys=False,
+    as_dict=False,
     indent=2,
     language=None,
     plural_forms=None,
-    as_dict=False,
-    sort_keys=False,
+    encoding=None,
     **kwargs
 ):
     """Convert pofile by content or filepath into JSON format.
@@ -39,6 +40,13 @@ def pofile_to_json(
     :param pretty: Pretty-print JSON output.
     :type pretty: bool
 
+    :param sort_keys: Sort dictionary by key. Combined with `as_dict`
+        parameter, returns an instance of OrderedDict.
+    :type sort_keys: bool
+
+    :param as_dict: Returns the output as a Python dictionary.
+    :type as_dict: bool
+
     :param indent: Number of spaces for indentation used pretty-printing JSON
         output. Only takes effect if ``pretty is True``.
     :type indent: int
@@ -54,18 +62,15 @@ def pofile_to_json(
         extracted from it.
     :type language: str
 
-    :param as_dict: Returns the output as a Python dictionary.
-    :type as_dict: bool
-
-    :param sort_keys: Sort dictionary by key. Combined with `as_dict`
-        parameter, returns an instance of OrderedDict.
-    :type sort_keys: bool
+    :param encoding: The encoding to use reading the pofile. By default will
+        be auto-detected.
+    :type encoding: str
 
     :return: Pofile as string in JSON format.
     :rtype: str
     """
     response = {}
-    po = polib.pofile(content_or_filepath)
+    po = polib.pofile(content_or_filepath, encoding=encoding)
     for entry in po:
         if entry.obsolete or (not fuzzy and entry.fuzzy):
             continue

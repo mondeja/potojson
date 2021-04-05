@@ -79,6 +79,8 @@ This output can be customized tuning the parameters of the function:
 - **fallback_to_msgid** (bool) Use msgid if translation is missing.
 - **fuzzy** (bool) Include fuzzy messages.
 - **pretty** (bool) Pretty-print JSON output.
+- **sort_keys** (bool) Sort dictionary by key. Combined with `as_dict`
+ parameter, returns an instance of [`collections.OrderedDict`][ordereddict].
 - **indent** (int) Number of spaces for indentation used pretty-printing JSON
  output. Only takes effect if `pretty` is enabled.
 - **language** (str) Language for the translations. Will be inserted in the
@@ -88,13 +90,13 @@ This output can be customized tuning the parameters of the function:
  Will be inserted in the empty key of the JSON output. If not provided and the
  passed pofile includes the "Plural-Forms" header, will be extracted from it.
 - **as_dict** (bool) Returns the output as a Python dictionary.
-- **sort_keys** (bool) Sort dictionary by key. Combined with `as_dict`
- parameter, returns an instance of [`collections.OrderedDict`][ordereddict].
+- **encoding** (str) The encoding to use reading the pofile. By default will
+ be auto-detected.
 
 ### CLI
 
 ```
-usage: potojson [-h] [-v] [-m] [-f] [-p] [-i N] [-l LANGUAGE] [-s PLURAL_FORMS] [-k] [PO_FILEPATH_OR_CONTENT ...]
+usage: potojson [-h] [-v] [-m] [-f] [-p] [-k] [-i N] [-l LANGUAGE] [-s PLURAL_FORMS] [-e ENCODING] [PO_FILEPATH_OR_CONTENT ...]
 
 Pofile to JSON conversion without pain.
 
@@ -109,12 +111,14 @@ optional arguments:
                         Use msgid if translation is missing.
   -f, --fuzzy           Include fuzzy messages.
   -p, --pretty          Pretty-print JSON output.
+  -k, --sort-keys       Sort JSON output by keys.
   -i N, --indent N      Number of spaces for indentation used pretty-printing JSON output. Only takes effect passing the "--pretty" option.
   -l LANGUAGE, --language LANGUAGE
                         Language for the translations. Will be inserted in the empty key of the JSON output. If not provided and the passed pofile includes the "Language" header, will be extracted from it.
   -s PLURAL_FORMS, --plural-forms PLURAL_FORMS
                         Plural forms for the language of the translations. Will be inserted in the empty key of the JSON output. If not provided and the passed pofile includes the "Plural-Forms" header, will be extracted from it.
-  -k, --sort-keys       Sort JSON output by keys.
+  -e ENCODING, --encoding ENCODING
+                        The encoding to use reading the pofile. By default will be auto-detected.
 ```
 
 [pypi-link]: https://pypi.org/project/potojson
