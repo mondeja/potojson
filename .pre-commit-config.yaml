@@ -24,6 +24,7 @@ repos:
     rev: 3.9.0
     hooks:
       - id: flake8
+        name: flake8-package
         additional_dependencies:
           - flake8-print
           - flake8-implicit-str-concat
@@ -34,6 +35,7 @@ repos:
     rev: 3.9.0
     hooks:
       - id: flake8
+        name: flake8-tests
         additional_dependencies:
           - flake8-print
           - flake8-implicit-str-concat
