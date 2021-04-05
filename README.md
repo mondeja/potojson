@@ -94,7 +94,7 @@ This output can be customized tuning the parameters of the function:
 ### CLI
 
 ```
-usage: potojson [-h] [-v] [-m] [-f] [-p] [-i N] [-l LANGUAGE] [-s PLURAL_FORMS] [-k] [PO_FILEPATH_OR_CONTENT [PO_FILEPATH_OR_CONTENT ...]]
+usage: potojson [-h] [-v] [-m] [-f] [-p] [-i N] [-l LANGUAGE] [-s PLURAL_FORMS] [-k] [PO_FILEPATH_OR_CONTENT ...]
 
 Pofile to JSON conversion without pain.
 
