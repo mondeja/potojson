@@ -3,7 +3,7 @@ from test import POFILE_START
 
 import pytest
 
-from potojson.__main__ import run
+from potojson.__main__ import _run as run
 
 
 def test_stdin(capsys, monkeypatch):

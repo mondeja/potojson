@@ -8,7 +8,7 @@ import sys
 from potojson import __description__, __version__, pofile_to_json
 
 
-def build_parser():
+def _build_parser():
     parser = argparse.ArgumentParser(description=__description__)
     parser.add_argument(
         "-v",
@@ -83,8 +83,8 @@ def build_parser():
     return parser
 
 
-def parse_options(args=[]):
-    parser = build_parser()
+def _parse_options(args=[]):
+    parser = _build_parser()
     if "-h" in args or "--help" in args:
         parser.print_help()
         sys.exit(0)
@@ -98,8 +98,8 @@ def parse_options(args=[]):
     return opts
 
 
-def run(args=[]):
-    opts = parse_options(args)
+def _run(args=[]):
+    opts = _parse_options(args)
 
     kwargs = dict(
         fallback_to_msgid=opts.fallback_to_msgid,
@@ -118,9 +118,9 @@ def run(args=[]):
     return (output, 0)
 
 
-def main():
-    sys.exit(run(args=sys.argv[1:])[1])
+def _main():
+    sys.exit(_run(args=sys.argv[1:])[1])
 
 
 if __name__ == "__main__":
-    main()
+    _main()

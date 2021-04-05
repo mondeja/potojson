@@ -1,10 +1,12 @@
+"""potojson package."""
+
 from collections import OrderedDict
 from json.encoder import JSONEncoder
 
 import polib
 
 
-__version__ = "0.0.18"
+__version__ = "0.0.19"
 __title__ = "potojson"
 __description__ = "Pofile to JSON conversion without pain."
 __all__ = ("pofile_to_json",)
@@ -22,8 +24,7 @@ def pofile_to_json(
     sort_keys=False,
     **kwargs
 ):
-    """Converts pofile by content or filepath into JSON format. Output can be
-    customized using some parameters.
+    """Convert pofile by content or filepath into JSON format.
 
     :param content_or_filepath: Pofile content or filepath to be converted into
         JSON format.
@@ -57,7 +58,7 @@ def pofile_to_json(
     :type as_dict: bool
 
     :param sort_keys: Sort dictionary by key. Combined with `as_dict`
-        parameter, returns an instance of :py:class:`collections.OrderedDict`.
+        parameter, returns an instance of OrderedDict.
     :type sort_keys: bool
 
     :return: Pofile as string in JSON format.
