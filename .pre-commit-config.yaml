@@ -15,7 +15,7 @@ repos:
     hooks:
       - id: setup-cfg-fmt
   - repo: https://github.com/psf/black
-    rev: 20.8b1
+    rev: 21.6b0
     hooks:
       - id: black
         language_version: python3
@@ -63,6 +63,6 @@ repos:
           - -config=https://github.com/mondeja/repo-stream-config
           - -updater=upstream
   - repo: https://github.com/mondeja/pre-commit-hooks
-    rev: v1.1.2
+    rev: v1.5.1
     hooks:
       - id: dev-extras-required
