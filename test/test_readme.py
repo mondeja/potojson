@@ -9,10 +9,7 @@ import pytest
 
 @pytest.mark.skipif(
     sys.version_info < (3, 10),
-    reason=(
-        "CLI usage in README follows convention of argparse HelpFormatter"
-        " for Python >= 3.9"
-    ),
+    reason="Argparse Help Formatters differ between Python versions",
 )
 def test_readme_cli_usage():
     """Tests if the content of the CLI usage (help printed) is the same as
