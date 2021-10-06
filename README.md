@@ -104,7 +104,7 @@ positional arguments:
   PO_FILEPATH_OR_CONTENT
                         Path to pofile or pofile content as string. If the input file stream is interactive, will be read from STDIN.
 
-optional arguments:
+options:
   -h, --help            show this help message and exit
   -v, --version         Show program version number and exit.
   -m, --fallback-to-msgid
