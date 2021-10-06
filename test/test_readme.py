@@ -8,7 +8,7 @@ import pytest
 
 
 @pytest.mark.skipif(
-    sys.version_info < (3, 9),
+    sys.version_info < (3, 10),
     reason=(
         "CLI usage in README follows convention of argparse HelpFormatter"
         " for Python >= 3.9"
