@@ -126,7 +126,7 @@ options:
 [pypi-pyversions-badge-link]: https://img.shields.io/pypi/pyversions/potojson
 [license-image]: https://img.shields.io/pypi/l/potojson?color=light-green
 [license-link]: https://github.com/mondeja/potojson/blob/master/LICENSE
-[tests-image]: https://img.shields.io/github/workflow/status/mondeja/potojson/Test
+[tests-image]: https://img.shields.io/github/actions/workflow/status/mondeja/potojson/ci.yml?branch=master&label=tests
 [tests-link]: https://github.com/mondeja/potojson/actions?query=workflow%3ATest
 [coverage-link]: https://coveralls.io/github/mondeja/potojson
 [coverage-image]: https://img.shields.io/coveralls/github/mondeja/potojson
